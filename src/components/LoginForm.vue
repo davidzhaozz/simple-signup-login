@@ -111,4 +111,8 @@ input {
 input::placeholder {
   color: #e4e1cd;
 }
+
+.register {
+  cursor: pointer;
+}
 </style>
