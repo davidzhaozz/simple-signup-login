@@ -17,23 +17,37 @@
 
     <div class="flex-1 bg-no-repeat bg-left" :style="{ backgroundImage: 'url(' + treeRight + ')' }">
       <div class="flex items-center justify-center h-full">
-        <login-form class="w-full max-w-xs" />
+        <login-form class="w-full max-w-xs" :showRegistrationSuccess="showRegistrationSuccess"/>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import {defineComponent, computed, onMounted, onUnmounted} from 'vue'
 import LoginForm from '@/components/LoginForm.vue'
 import treeLeft from '@/assets/books-of-trees-left.png';
 import treeRight from '@/assets/books-of-trees-right.png';
+import { useUserStore } from '@/stores/user'
 
 export default defineComponent({
   name: 'LoginView',
   components: {
     LoginForm,
   },
+  setup() {
+    const userStore = useUserStore()
+    const showRegistrationSuccess = computed(() => userStore.registered)
+
+    onUnmounted(() => {
+      if (userStore.registered) {
+         userStore.setRegistered(false);
+      }
+    });
+
+    return { showRegistrationSuccess };
+  },
+
   data() {
     return {
       treeLeft, treeRight

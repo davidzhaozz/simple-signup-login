@@ -71,6 +71,7 @@
 import { defineComponent, ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { userCreationService } from '@/services/apiService'
+import { useUserStore } from '@/stores/user'
 
 export default defineComponent({
   name: 'RegisterForm',
@@ -80,6 +81,7 @@ export default defineComponent({
     const confirmPassword = ref('')
     const passwordMismatch = computed(() => password.value !== confirmPassword.value)
     const router = useRouter()
+    const userStore = useUserStore()
 
     const register = async () => {
       if (!passwordMismatch.value) {
@@ -89,6 +91,7 @@ export default defineComponent({
             password: password.value
           })
 
+          userStore.setRegistered(true)
           router.push('/login')
         } catch (error) {
           console.error('System Error:', error)

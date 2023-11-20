@@ -8,6 +8,10 @@
         <span class="absolute top-0 right-0 px-4 py-3" @click="clearError" style="cursor: pointer">x</span>
       </div>
 
+      <div v-if="showRegistrationSuccess" class="text-center font-bold mb-4 py-1 rounded reg-back">
+        You have successfully registered! Please log in.
+      </div>
+
       <h2 class="text-center text-2xl font-bold mb-4 py-2 rounded reg-back">
         Login
       </h2>
@@ -94,6 +98,9 @@ export default defineComponent({
       loginErrorMessage,
       clearError
     }
+  },
+  props: {
+    showRegistrationSuccess: Boolean,
   }
 })
 </script>
