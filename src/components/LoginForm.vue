@@ -1,6 +1,13 @@
 <template>
   <div class="min-h-screen flex items-center justify-center">
     <div class="max-w-md w-full">
+      <!-- Error Message -->
+      <div v-if="loginError" class="mb-4 bg-red-200 text-red-800 p-1 rounded relative" role="alert">
+        <strong class="font-bold">Error:</strong>
+        <span class="block sm:inline">{{ loginErrorMessage }}</span>
+        <span class="absolute top-0 right-0 px-4 py-3" @click="clearError" style="cursor: pointer">x</span>
+      </div>
+
       <h2 class="text-center text-2xl font-bold mb-4 py-2 rounded reg-back">
         Login
       </h2>
