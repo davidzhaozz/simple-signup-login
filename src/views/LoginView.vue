@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, computed, onMounted, onUnmounted} from 'vue'
+import {defineComponent, computed, onUnmounted} from 'vue'
 import LoginForm from '@/components/LoginForm.vue'
 import treeLeft from '@/assets/books-of-trees-left.png';
 import treeRight from '@/assets/books-of-trees-right.png';
