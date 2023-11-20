@@ -1,13 +1,16 @@
 <template>
   <div class="min-h-screen flex items-center justify-center">
     <div class="max-w-md w-full">
-      <form @submit.prevent="register" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <h2 class="text-center text-2xl font-bold mb-4 py-2 rounded reg-back">
+        Registration
+      </h2>
+      <form @submit.prevent="register" class="shadow-md rounded px-8 pt-6 pb-8 mb-4 reg-back">
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
             Username
           </label>
           <input
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             id="username"
             type="text"
             placeholder="Username"
@@ -45,14 +48,14 @@
         </div>
         <div class="flex items-center justify-center space-x-4">
           <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            class="font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline form-button"
             type="submit"
             :disabled="passwordMismatch"
           >
             Register
           </button>
           <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            class="text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline form-button"
             type="button"
             @click="goToLogin"
           >
@@ -113,3 +116,24 @@ export default defineComponent({
   }
 })
 </script>
+<style scoped>
+.reg-back {
+  background-color: #fef8cc;
+  color: #151f2a;
+}
+
+.form-button {
+  background-color: #975432;
+  color: #ffffff;
+}
+
+input {
+  background-color: transparent;
+  border: 0;
+}
+
+input::placeholder {
+  color: #e4e1cd;
+}
+
+</style>

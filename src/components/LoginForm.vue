@@ -1,65 +1,37 @@
 <template>
-  <div class="max-w-sm mx-auto p-6 bg-white rounded-lg shadow-md">
-    <div
-      v-if="loginError"
-      class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
-      role="alert"
-    >
-      <span class="block sm:inline">{{ loginErrorMessage }}</span>
-      <span
-        class="absolute top-0 bottom-0 right-0 px-4 py-3"
-        @click="clearError"
-        style="cursor: pointer"
-      >
-        x
-      </span>
-    </div>
+  <div class="min-h-screen flex items-center justify-center">
+    <div class="max-w-md w-full">
+      <h2 class="text-center text-2xl font-bold mb-4 py-2 rounded reg-back">
+        Login
+      </h2>
 
-    <h2 class="text-center text-2xl font-bold text-gray-700 mb-8">Login</h2>
-    <form @submit.prevent="login">
-      <div class="mb-6">
-        <label class="block mb-2 text-sm text-gray-600" for="username">Username</label>
-        <input
-          class="w-full px-4 py-2 text-gray-700 bg-white border rounded-md focus:border-blue-500 focus:outline-none focus:ring"
-          id="username"
-          type="text"
-          v-model="username"
-          placeholder="Your username"
-          required
-        />
-      </div>
-      <div class="mb-6">
-        <label class="block mb-2 text-sm text-gray-600" for="password">Password</label>
-        <input
-          class="w-full px-4 py-2 text-gray-700 bg-white border rounded-md focus:border-blue-500 focus:outline-none focus:ring"
-          id="password"
-          type="password"
-          v-model="password"
-          placeholder="Your password"
-          required
-        />
-      </div>
-      <div class="mb-6">
-        <button
-          class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-          type="submit"
-        >
-          Sign In
-        </button>
-      </div>
-      <div class="text-center">
-        <p class="text-sm text-gray-600">
-          Don’t have an account yet?
-          <button
-            class="text-blue-500 focus:outline-none focus:underline hover:underline"
-            type="button"
-            @click="goToRegister"
-          >
-            Register
+      <form @submit.prevent="login" class="shadow-md rounded px-8 pt-6 pb-8 mb-4 reg-back">
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Username</label>
+          <input v-model="username" type="text" id="username" required placeholder="Enter your username"
+                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+        </div>
+
+        <div class="mb-6">
+          <label class="block text-gray-700 text-sm font-bold mb-2 custom-login-text" for="password">Password</label>
+          <input v-model="password" type="password" id="password" required placeholder="Enter your password"
+                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" />
+        </div>
+
+        <div class="mb-4">
+          <button type="submit"
+                  class="w-full font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline custom-button-sign-in form-button">
+            Sign In
           </button>
+        </div>
+
+        <p class="text-center text-gray-600 text-sm custom-login-text">
+          Don’t have an account?
+          <a @click="goToRegister" class="text-white-500 hover:text-white-800 focus:outline-none focus:underline register">Register here</a>
         </p>
-      </div>
-    </form>
+
+      </form>
+    </div>
   </div>
 </template>
 
@@ -119,4 +91,24 @@ export default defineComponent({
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+
+.reg-back {
+  background-color: #fef8cc;
+  color: #151f2a;
+}
+
+.form-button {
+  background-color: #975432;
+  color: #ffffff;
+}
+
+input {
+  background-color: transparent;
+  border: 0;
+}
+
+input::placeholder {
+  color: #e4e1cd;
+}
+</style>

@@ -1,10 +1,10 @@
 <template>
   <div class="flex h-screen">
-    <div class="w-1/2 bg-gray-500"></div>
+    <div class="flex-1 bg-no-repeat bg-right" :style="{ backgroundImage: 'url(' + treeLeft + ')' }"></div>
 
-    <div class="w-1/2 bg-white flex">
-      <div class="flex flex-col justify-center w-full">
-        <RegisterForm class="w-full max-w-xs ml-0 md:ml-12 lg:ml-24" />
+    <div class="flex-1 bg-no-repeat bg-left" :style="{ backgroundImage: 'url(' + treeRight + ')' }">
+      <div class="flex items-center justify-center h-full">
+        <RegisterForm class="w-full max-w-xs" />
       </div>
     </div>
   </div>
@@ -13,11 +13,18 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import RegisterForm from '@/components/RegisterForm.vue'
+import treeLeft from '@/assets/books-of-trees-left.png';
+import treeRight from '@/assets/books-of-trees-right.png';
 
 export default defineComponent({
   name: 'RegisterView',
   components: {
-    RegisterForm
+    RegisterForm,
+  },
+  data() {
+    return {
+      treeLeft, treeRight
+    }
   }
 })
 </script>
